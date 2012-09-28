@@ -1,4 +1,4 @@
 sweet-view
 ==========
 
-A simple SugarCRM client.
+A simple mobile SugarCRM client.
