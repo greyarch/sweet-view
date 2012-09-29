@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns     = "http://www.w3.org/ns/widgets"
+        xmlns:gap = "http://phonegap.com/ns/1.0"
+        id        = "net.greyarch.sweet-view"
+        version   = "1.0.0">
+    <name>Sweet View</name>
+
+    <description>
+        A simple SugarCRM mobile client.
+    </description>
+
+    <author href="http://greyarch.net" email="gantcho@greyarch.net">
+        Greyarch Ltd.
+    </author>
+
+    <feature name="http://api.phonegap.com/1.0/device" />
+
+    <preference name="phonegap-version" value="2.1.0" />
+    <preference name="orientation"      value="default" />
+    <preference name="target-device"    value="universal" />
+    <preference name="fullscreen"       value="false" />
+</widget>
