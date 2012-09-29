@@ -2,7 +2,7 @@
     /**
      * The application's namespace, used by Sencha Command to generate classes
      */
-    "name": "AndroidSencha",
+    "name": "SV",
 
     /**
      * The file path to this application's front HTML document, relative to this app.json file
@@ -32,17 +32,17 @@
      *      }
      */
     "js": [
-        {
-            "path": "cordova-2.1.0.js"
-        },
-        {
-            "path": "lib/senchaTouchAll.js"
-        },
-        {
-            "path": "app.js",
-            "bundle": true,  /* Indicates that all class dependencies are concatenated into this file when build */
-            "update": "delta"
-        }
+    {
+        "path": "cordova-2.1.0.js"
+    },
+    {
+        "path": "lib/senchaTouchAll.js"
+    },
+    {
+        "path": "app.js",
+        "bundle": true,  /* Indicates that all class dependencies are concatenated into this file when build */
+        "update": "delta"
+    }
     ],
 
     /**
@@ -59,10 +59,10 @@
      *      }
      */
     "css": [
-        {
-            "path": "app.css",
-            "update": "delta"
-        }
+    {
+        "path": "app.css",
+        "update": "delta"
+    }
     ],
 
     /**
@@ -73,13 +73,13 @@
          * List of items in the CACHE MANIFEST section
          */
         "cache": [
-            "index.html"
+        "index.html"
         ],
         /**
          * List of items in the NETWORK section
          */
         "network": [
-            "*"
+        "*"
         ],
         /**
          * List of items in the FALLBACK section
@@ -91,16 +91,16 @@
      * Extra resources to be copied along when build
      */
     "resources": [
-        "resources/images",
-        "resources/icons",
-        "resources/startup"
+    "resources/images",
+    "resources/icons",
+    "resources/startup"
     ],
 
     /**
      * File / directory name matchers to ignore when copying to the builds, must be valid regular expressions
      */
     "ignore": [
-        "\.git$"
+    "\.git$"
     ],
 
     /**
@@ -115,7 +115,7 @@
     "buildPaths": {
         "testing": "build/testing",
         "production": "build/production",
-        "package": "build/package",
+        "package": "build/phonegap/www",
         "native": "build/native"
     },
 
@@ -133,5 +133,5 @@
      * Uniquely generated id for this application, used as prefix for localStorage keys.
      * Normally you should never change this value.
      */
-    "id": "2d560390-b14f-11e1-adf6-dd1773fe1e2d"
+    "id": "7e781d27-f5d2-4b4f-b26e-5428fb4376d6"
 }
