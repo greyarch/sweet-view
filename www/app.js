@@ -5,21 +5,18 @@ Ext.application({
     views: ['Main', 'SettingsForm'],
     stores: ['Entries', 'Settings'],
     models: ['Entry', 'Settings'],
-    requires: ['SV.proxy.Login', 'SV.store.Settings'],
+    requires: ['SV.proxy.Login', 'SV.store.Settings','Ext.MessageBox'],
     
     viewport: {
         autoMaximize: true
     },
     
     launch: function() {
-        Ext.Viewport.add([
-        {
+        Ext.Viewport.add([{
             xtype: 'mainpanel'
-        },
-        {
+        }, {
             xtype: 'settingsform'
         }]);
-    //        Ext.Viewport.setActiveItem(1);
     },
     
     sessionId: '',
@@ -44,14 +41,17 @@ Ext.application({
                         console.log("Login successfull, session id is " + obj.id);
                         SV.app.sessionId = obj.id;
                     } else {
+                        Ext.Msg.alert(obj.name, obj.description, Ext.emptyFn);
                         console.log(obj.name + " : " + obj.description);
                         SV.app.sessionId = 0;
                     }
                 }, function(response, opts) {
+                    Ext.Msg.alert('Server side failure', 'Status code ' + response.status, Ext.emptyFn);
                     console.log('Server side failure with status code ' + response.status);
                     SV.app.sessionId = 0;
                 }, false);
             } else {
+                Ext.Msg.alert('Settings', 'You need to configure the application for first use.', Ext.emptyFn);
                 console.log("No connection settings.")
                 SV.app.showSettignsForm();
             }

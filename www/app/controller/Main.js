@@ -59,11 +59,12 @@ Ext.define('SV.controller.Main', {
                     }
                 })
             } else {
+                Ext.Msg.alert(obj.name, obj.description, Ext.emptyFn);
                 console.log(obj.name + " : " + obj.description);
             }
         }, 
         function(response, opts){
-            console.log('failure!?');
+            Ext.Msg.alert('Server side failure', 'Status code ' + response.status, Ext.emptyFn);
         });
     }
 });
