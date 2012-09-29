@@ -13,9 +13,9 @@ Ext.application({
     
     launch: function() {
         Ext.Viewport.add([
-//        {
-//            xtype: 'mainpanel'
-//        },
+        {
+            xtype: 'mainpanel'
+        },
         {
             xtype: 'settingsform'
         }]);
