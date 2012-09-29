@@ -17,6 +17,7 @@ Ext.application({
         }, {
             xtype: 'settingsform'
         }]);
+        Ext.Viewport.setActiveItem(1);
     },
     
     sessionId: '',
