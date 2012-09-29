@@ -12,12 +12,14 @@ Ext.application({
     },
     
     launch: function() {
-        Ext.Viewport.add([{
-            xtype: 'mainpanel'
-        }, {
+        Ext.Viewport.add([
+//        {
+//            xtype: 'mainpanel'
+//        },
+        {
             xtype: 'settingsform'
         }]);
-        Ext.Viewport.setActiveItem(1);
+    //        Ext.Viewport.setActiveItem(1);
     },
     
     sessionId: '',
