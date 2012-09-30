@@ -33,7 +33,8 @@ Ext.define('SV.controller.Main', {
 
     showDetail: function(list, record) {
         var main = this.getMain();
-        this.getEntries().setMasked({
+        var entries = this.getEntries();
+        entries.setMasked({
             xtype: 'loadmask',
             message: 'Loading...'
         });
@@ -53,7 +54,7 @@ Ext.define('SV.controller.Main', {
             max_results:''
         },
         function(response, opts){
-            main.setMasked(false);
+            entries.setMasked(false);
             var obj = Ext.decode(response.responseText);
             if(obj.entry_list[0].id) {
                 main.push({
@@ -70,7 +71,7 @@ Ext.define('SV.controller.Main', {
             }
         }, 
         function(response, opts){
-            main.setMasked(false);
+            entries.setMasked(false);
             Ext.Msg.alert('Server side failure', 'Status code ' + response.status, Ext.emptyFn);
         });
     }

@@ -2,9 +2,9 @@ Ext.define('SV.view.Main', {
     extend: 'Ext.navigation.View',
     xtype: 'mainpanel',
     requires: [
-        'SV.view.EntryList',
-        'SV.view.SettingsForm',
-        'SV.store.Entries'
+    'SV.view.EntryList',
+    'SV.view.SettingsForm',
+    'SV.store.Entries'
     ],
 
     config: {
@@ -19,7 +19,6 @@ Ext.define('SV.view.Main', {
                 text: 'Settings',
                 align: 'right'
             }]
-        }
-
+        } 
     }
 });
