@@ -8,27 +8,31 @@ Ext.application({
     requires: ['SV.proxy.Login', 'SV.store.Settings','Ext.MessageBox'],
     
     viewport: {
-        autoMaximize: true
+        autoMaximize: true,
+        masked: {
+            xtype: 'loadmask',
+            message: 'Loging in'
+        }
     },
     
     launch: function() {
-        Ext.Viewport.add([{
-            xtype: 'mainpanel'
-        }, {
-            xtype: 'settingsform'
-        }]);
+        Ext.Viewport.add([{xtype: 'mainpanel'}]);
+        Ext.Viewport.add([{xtype: 'settingsform'}]);
+        this.authenticate();
     },
     
     sessionId: '',
     
     authenticate: function() {
+        var sv = this;
         var loginInfo = Ext.decode(localStorage.getItem('sweetview-settings'));
-        if (SV.app.sessionId) {
+        if (sv.sessionId) {
             console.log("success, id is " + SV.app.sessionId);
         } else {
+            Ext.Viewport.setMasked(true);
             console.log("no id yet, authenticating");
             if (loginInfo !== null) {
-                SV.app.makeRequest('login', {
+                sv.makeRequest('login', {
                     user_auth:{
                         user_name:loginInfo.username, 
                         password:loginInfo.password,
@@ -39,22 +43,23 @@ Ext.application({
                     var obj = Ext.decode(response.responseText);
                     if (obj.id) {
                         console.log("Login successfull, session id is " + obj.id);
-                        SV.app.sessionId = obj.id;
+                        sv.sessionId = obj.id;
                     } else {
                         Ext.Msg.alert(obj.name, obj.description, Ext.emptyFn);
                         console.log(obj.name + " : " + obj.description);
-                        SV.app.sessionId = 0;
+                        sv.sessionId = 0;
                     }
                 }, function(response, opts) {
                     Ext.Msg.alert('Server side failure', 'Status code ' + response.status, Ext.emptyFn);
                     console.log('Server side failure with status code ' + response.status);
-                    SV.app.sessionId = 0;
+                    sv.sessionId = 0;
                 }, false);
             } else {
-                Ext.Msg.alert('Settings', 'You need to configure the application for first use.', Ext.emptyFn);
+                Ext.Msg.alert('Settings', 'Please, configure the application.', Ext.emptyFn);
                 console.log("No connection settings.")
-                SV.app.showSettingsForm();
+                sv.showSettingsForm();
             }
+            Ext.Viewport.setMasked(false);
         }
     },
     
