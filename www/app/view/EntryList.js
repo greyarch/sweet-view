@@ -7,7 +7,7 @@ Ext.define('SV.view.EntryList', {
         title: 'Accounts',
         itemTpl: '{name_value_list.name.value}',
         store: 'Entries',
-        onItemDisclosure: true,
+//        onItemDisclosure: true,
         grouped: true,
         indexBar: true
     }

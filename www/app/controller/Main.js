@@ -11,7 +11,7 @@ Ext.define('SV.controller.Main', {
         },
         control: {
             entries: {
-                disclose: 'showDetail'
+                itemtap: 'showDetail'
             },
             main: {
                 activate: function(main) {
@@ -31,7 +31,8 @@ Ext.define('SV.controller.Main', {
         }
     },
 
-    showDetail: function(list, record) {
+    showDetail: function(list, index, target, record) {
+        console.log('item tapped');
         var main = this.getMain();
         var entries = this.getEntries();
         entries.setMasked({
