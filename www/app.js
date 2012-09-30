@@ -11,7 +11,7 @@ Ext.application({
         autoMaximize: true,
         masked: {
             xtype: 'loadmask',
-            message: 'Loging in'
+            message: 'Loging in...'
         }
     },
     
@@ -27,7 +27,7 @@ Ext.application({
         var sv = this;
         var loginInfo = Ext.decode(localStorage.getItem('sweetview-settings'));
         if (sv.sessionId) {
-            console.log("success, id is " + SV.app.sessionId);
+            console.log("already authenticated");
         } else {
             Ext.Viewport.setMasked(true);
             console.log("no id yet, authenticating");
@@ -42,7 +42,7 @@ Ext.application({
                 }, function(response, opts) {
                     var obj = Ext.decode(response.responseText);
                     if (obj.id) {
-                        console.log("Login successfull, session id is " + obj.id);
+                        console.log("Login successfull");
                         sv.sessionId = obj.id;
                     } else {
                         Ext.Msg.alert(obj.name, obj.description, Ext.emptyFn);

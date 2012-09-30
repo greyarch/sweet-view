@@ -6,10 +6,11 @@ Ext.define('SV.controller.Main', {
     config: {
         refs: {
             main: 'mainpanel',
-            settings: '#settingsButton'
+            settings: '#settingsButton',
+            entries: 'entrylist'
         },
         control: {
-            'entrylist': {
+            entries: {
                 disclose: 'showDetail'
             },
             main: {
@@ -32,6 +33,10 @@ Ext.define('SV.controller.Main', {
 
     showDetail: function(list, record) {
         var main = this.getMain();
+        this.getEntries().setMasked({
+            xtype: 'loadmask',
+            message: 'Loading...'
+        });
         SV.app.makeRequest('get_entry_list', {
             session: SV.app.sessionId,
             module_name:'Accounts',
@@ -48,6 +53,7 @@ Ext.define('SV.controller.Main', {
             max_results:''
         },
         function(response, opts){
+            main.setMasked(false);
             var obj = Ext.decode(response.responseText);
             if(obj.entry_list[0].id) {
                 main.push({
@@ -64,6 +70,7 @@ Ext.define('SV.controller.Main', {
             }
         }, 
         function(response, opts){
+            main.setMasked(false);
             Ext.Msg.alert('Server side failure', 'Status code ' + response.status, Ext.emptyFn);
         });
     }
