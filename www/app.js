@@ -11,7 +11,7 @@ Ext.application({
         autoMaximize: true,
         masked: {
             xtype: 'loadmask',
-            message: 'Loging in...'
+            message: 'Logging in...'
         }
     },
     
