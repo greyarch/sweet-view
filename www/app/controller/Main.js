@@ -16,7 +16,7 @@ Ext.define('SV.controller.Main', {
                 activate: function(main) {
                     var loginInfo = Ext.decode(localStorage.getItem('sweetview-settings'));
                     if (loginInfo == null) {
-                        SV.app.showSettignsForm();
+                        SV.app.showSettingsForm();
                     } else {
                         Ext.getStore('Entries').load();
                     }

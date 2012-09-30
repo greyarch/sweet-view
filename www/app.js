@@ -53,7 +53,7 @@ Ext.application({
             } else {
                 Ext.Msg.alert('Settings', 'You need to configure the application for first use.', Ext.emptyFn);
                 console.log("No connection settings.")
-                SV.app.showSettignsForm();
+                SV.app.showSettingsForm();
             }
         }
     },
